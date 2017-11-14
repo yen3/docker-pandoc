@@ -1,11 +1,13 @@
 FROM alpine:3.6
 
+ARG VERSION
+
 RUN apk add  --no-cache --virtual .build-deps ca-certificates wget \
-    && wget https://github.com/jgm/pandoc/releases/download/2.0.2/pandoc-2.0.2-linux.tar.gz \
-    && tar xf pandoc-2.0.2-linux.tar.gz \
-    && cp pandoc-2.0.2/bin/* /usr/bin/ \
-    && rm pandoc-2.0.2-linux.tar.gz \
-    && rm -rf pandoc-2.0.2 \
+    && wget https://github.com/jgm/pandoc/releases/download/${VERSION}/pandoc-${VERSION}-linux.tar.gz \
+    && tar xf pandoc-${VERSION}-linux.tar.gz \
+    && cp pandoc-${VERSION}/bin/* /usr/bin/ \
+    && rm pandoc-${VERSION}-linux.tar.gz \
+    && rm -rf pandoc-${VERSION} \
     && apk del .build-deps
 
 WORKDIR "/data"
