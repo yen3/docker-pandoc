@@ -1,6 +1,6 @@
-FROM alpine:3.6
+FROM alpine:latest
 
-ARG VERSION
+ARG VERSION=2.0.2
 
 RUN apk add  --no-cache --virtual .build-deps ca-certificates wget \
     && wget https://github.com/jgm/pandoc/releases/download/${VERSION}/pandoc-${VERSION}-linux.tar.gz \
